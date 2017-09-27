@@ -1,0 +1,154 @@
+*
+  padding: 0
+  margin: 0
+  font-size: 2vh
+  line-height: 1
+  color: white
+
+//Mixins
+////Grid
+@mixin grid ($columns, $rows, $area)
+  grid-template-columns: $columns
+  grid-template-rows: $rows
+  grid-template-areas: $area
+
+////Center Horizontally and Vertically Using grid
+@mixin grid_Vertical_Horizontal_Center
+  justify-self: center
+  align-self: center
+
+////Center Horizontally and Vertically Using Css transform
+@mixin normal_Vertical_Horizontal_Center
+  // Remember to declare parent as postion: relative
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+@mixin view_Height_Width
+  height: 100vh
+  width: 100vw
+
+
+.center
+  justify-self: center
+  align-self: center
+  color: black
+
+// Body
+body
+  display: grid
+  @include view_Height_Width
+  @include grid ($columns: 0.1px 1fr 0.1px, $rows: 0.1px 1fr 0.1px, $area: ". . ." ". main_Section ." ". . .")
+  grid-column-gap: 50px
+  grid-row-gap: 100px
+  @include view_Height_Width
+  width: 100vw
+  height: 100vh
+   // background-color: rgba(0, 0, 0, 0.8)
+  background: url(../images/body_Background.gif)
+  background-repeat: no-repeat
+  background-size: cover
+  // Main Section
+  .main_Section
+    display: grid
+    grid-area: main_Section
+    background: url(../images/main_Background.gif)
+    background-repeat: no-repeat
+    background-size: cover
+    height: 100%
+    width: 100%
+    border: 1px white solid
+    @include grid ($columns: 1fr, $rows: 1fr 1fr 1fr 5fr, $area: "header" "timer " "question " "answers " )
+    // Header
+    .header
+      grid-area: header
+      border: 1px white solid
+      display: grid
+      .logo_Img
+        justify-self: center
+        align-self: center
+    // Timer
+    .timer
+      grid-area: timer
+      border: 1px white solid
+      display: grid
+      .timer_Text
+        justify-self: center
+        align-self: center
+    // Question
+    .question
+      grid-area: question
+      border: 1px white solid
+      display: grid
+      .question_Text
+        justify-self: center
+        align-self: center
+    // Answers
+    .answers
+      grid-area: answers
+      border: 1px white solid
+      display: grid
+      @include grid ($columns: 1fr 1fr 1fr 1fr, $rows: 0.5fr 1fr 0.5fr, $area: ". . . ." "btn_First btn_Second btn_Third btn_Forth" ". . . .")
+      grid-column-gap: 10px
+      position: relative
+      .btn
+        display: grid
+        width: 80%
+        height: 100%
+        @include grid_Vertical_Horizontal_Center
+
+      .btn_Common
+        display: none
+
+      .btn_Start
+        position: absolute
+        @include normal_Vertical_Horizontal_Center
+        width: 20%
+        height: 20%
+
+      .btn_Reset
+        position: absolute
+        top: 50%
+        left: 30%
+        transform: translate(-50%, -30%)
+        width: 20%
+        height: 20%
+        display: none
+
+
+      .btn_First
+        grid-area: btn_First
+      .btn_Second
+        grid-area: btn_Second
+
+      .btn_Third
+        grid-area: btn_Third
+      .btn_Forth
+        grid-area: btn_Forth
+
+@media only screen and (max-width: 740px)
+  body
+    @include grid ($columns: 0.1px 1fr 0.1px, $rows: 0.1px 1fr 0.1px, $area: ". . ." ". main_Section ." ". . .")
+    // Main Section
+    .main_Section
+      // Header
+      .header
+        .logo_Img
+      // Timer
+      .timer
+        .timer_Text
+      // Question
+      .question
+        .question_Text
+      // Answers
+      .answers
+        .btn
+        .btn1
+        .btn_Start
+          width: 40%
+          height: 10%
+        .btn_First
+        .btn_Second
+        .btn_Third
+        .btn_Forth
