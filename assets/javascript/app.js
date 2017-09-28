@@ -62,7 +62,6 @@ function choose(){
     // Shows the first second and forth buttons after they get hidden when the display picture function is called or game over condition is met
     $(".btn_First, btn_Second, .btn_Forth").show();
     $(".btn_First, .btn_Second, .img-responsiv, .btn_Forth").show();
-    // $(".btn2").show();
     $(".img-responsiv").detach();
     $(".btn_Second").html("<btnText class = 'btn2 center'> Second </btnText>");
     // Calls the timer function to display seconds remaining
@@ -106,7 +105,7 @@ function choose(){
 // Function for changing Timer text
 function startTimer(){
   //Assigns seconds 5 seconds each time startTimer function is called
-  seconds = 5;
+  seconds = 10;
   console.log("Timer is running");
   // Replaces the text everytime this function is called
   function time() {
@@ -229,8 +228,7 @@ function reset(){
 
   // Hides the reset button
   $(".btn_Reset").hide();
-  // Executes Choose
-  choose();
+
 };
 
 
@@ -283,33 +281,6 @@ $(".btn_Forth").on("click", function(){
 });
 
 ////////////////////// End of Event Listners ///////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
